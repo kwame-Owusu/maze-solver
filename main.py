@@ -3,22 +3,30 @@ from point import Line, Point
 
 def main() -> None:
   win = Window(800, 600) 
-  c = Cell(win)
-  c.has_left_wall = False
-  c.draw(50, 100, 50, 100)  # x1=50, x2=100, y1=50, y2=100
-  
-  c = Cell(win)
-  c.has_right_wall = False
-  c.draw(125, 200, 125, 200)  # x1=125, x2=200, y1=125, y2=200
-  
-  c = Cell(win)
-  c.has_bottom_wall = False
-  c.draw(225, 250, 225, 250)  # x1=225, x2=250, y1=225, y2=250
-  
-  c = Cell(win)
-  c.has_top_wall = False
-  c.draw(300, 500, 300, 500)  # x1=300, x2=500, y1=300, y2=500
-    
+  c1 = Cell(win)
+  c1.has_right_wall = False
+  c1.draw(50, 50, 100, 100)
+
+  c2 = Cell(win)
+  c2.has_left_wall = False
+  c2.has_bottom_wall = False
+  c2.draw(100, 50, 150, 100)
+
+  c1.draw_move(c2)
+
+  c3 = Cell(win)
+  c3.has_top_wall = False
+  c3.has_right_wall = False
+  c3.draw(100, 100, 150, 150)
+
+  c2.draw_move(c3)
+
+  c4 = Cell(win)
+  c4.has_left_wall = False
+  c4.draw(150, 100, 200, 150)
+
+  c3.draw_move(c4, True) 
+
   win.wait_for_close() 
 
 if __name__ == "__main__":
