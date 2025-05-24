@@ -64,7 +64,7 @@ class Cell:
       line = Line(Point(x1, y2), Point(x2, y2))
       self.__win.draw_line(line) 
 
-  def draw_move(self, to_cell, undo=False):
+  def draw_move(self, to_cell, undo=False) -> None:
     half_length = abs(self.__x2 - self.__x1) // 2
     x_center = half_length + self.__x1
     y_center = half_length + self.__y1
@@ -80,3 +80,28 @@ class Cell:
     line = Line(Point(x_center, y_center), Point(x_center2, y_center2))
     self.__win.draw_line(line, fill_color)
  
+
+
+class Maze:
+  """holds all the cells in the maze in a 2-dimensional grid: a list of lists."""
+  def __init__(self, x1, y1, num_rows, num_cols, cell_size_x, cell_size_y, win) -> None:
+    self.__cells = []
+    self.__create_cells()
+    self.x1 = x1
+    self.y1 = y1
+    self.num_rows = num_rows 
+    self.num_cols= num_cols
+    self.cell_size_x= cell_size_x 
+    self.cell_size_y= cell_size_y
+    self.win = win
+  
+  def __create_cells(self) -> None:
+    for i in range(self.num_cols):
+      self.__cells.append([])
+      for j in range(self.num_rows):
+        cell_object = Cell(self.win)
+        self.__draw_cell(i, j)
+        self.__cells[i].append(cell_object)
+
+  def __draw_cell(self,i: int, j: int) -> None:
+    pass
